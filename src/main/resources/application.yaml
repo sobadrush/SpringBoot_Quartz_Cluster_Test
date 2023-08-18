@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    url: jdbc:sqlserver://localhost:1437;databaseName=DB_EMP_DEPT;encrypt=false
+    password: Ver7CompleXPW

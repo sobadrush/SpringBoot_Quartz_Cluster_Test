@@ -1,6 +1,18 @@
-spring:
-  datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    username: sa
-    url: jdbc:sqlserver://localhost:1437;databaseName=DB_EMP_DEPT;encrypt=false
-    password: Ver7CompleXPW
+server:
+  port: 0 # 使用隨機 PORT
+c3p0:
+  jdbcUrl: jdbc:sqlserver://localhost:1437;SelectMethod=cursor;databaseName=DB_DEPT_QUARTZ;encrypt=false
+  user: sa
+  password: Ver7CompleXPW
+  driverClass: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  minPoolSize: 2
+  maxPoolSize: 10
+  maxIdleTime: 1800000
+  acquireIncrement: 3
+  maxStatements: 1000
+  initialPoolSize: 3
+  idleConnectionTestPeriod: 60
+  acquireRetryAttempts: 30
+  acquireRetryDelay: 1000
+  breakAfterAcquireFailure: false
+  testConnectionOnCheckout: false

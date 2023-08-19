@@ -19,7 +19,7 @@ public class MonitorJobProxy implements Job {
     public void execute(JobExecutionContext jobExecutionContext) {
         System.err.println(" >>> MonitorJobProxy Execute >>>");
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
-        monitorJob = (MonitorJob) jobDataMap.get("monitorJob");
+        monitorJob = (MonitorJob) jobDataMap.get("monitorJob");  // 這邊若開啟 spring-boot-devtools 會轉型失敗，應該是原生 BUG
         monitorJob.work(jobExecutionContext);
     }
 }

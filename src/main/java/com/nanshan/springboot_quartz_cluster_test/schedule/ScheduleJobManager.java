@@ -97,9 +97,11 @@ public class ScheduleJobManager {
         String jobName = jobDetail.getKey().getName();
         try {
             // (Type 1) 添加調度任務, 如果job已經存在, 則覆蓋更新job
+            // 需搭配 factoryBean.setOverwriteExistingJobs(true) 才會更新 QRTZ_CRON_TRIGGERS 表格
             scheduler.scheduleJob(jobDetail, Set.of(trigger), true);
 
             // (Type 2) 添加調度任務, 根據job的名稱和分組判斷, 如果job已經存在時, 拋出異常
+            // 需搭配 factoryBean.setOverwriteExistingJobs(true) 才會更新 QRTZ_CRON_TRIGGERS 表格
             // scheduler.scheduleJob(jobDetail, trigger);
             // scheduler.rescheduleJob(trigger.getKey(), trigger); // 有此設置，才能在 SpringBoot 重啟時動態將 DB 中的 QRTZ_CRON_TRIGGERS 表格更新
             log.info("註冊 Job: {} 成功!", jobName);
